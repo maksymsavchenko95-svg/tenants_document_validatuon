@@ -1,0 +1,16 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: dockers/app/Dockerfile
+    environment:
+      DEBUG: "true"
+      XDEBUG_MODE: "debug"
+      PHP_IDE_CONFIG: "serverName=docval"
+      SECURITY_SALT: "some-security-salt-asd213"
+    ports:
+      - "8765:8765"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./:/app
